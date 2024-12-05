@@ -1,0 +1,96 @@
+---
+import Intro from '../components/Intro.astro';
+import AboutUs from '../components/AboutUs.astro';
+import Contact from '../components/Contact.astro';
+import Clouds from '../components/Clouds.astro';
+import Footer from '../components/Footer.astro';
+import PolkaDots from '../components/PolkaDots.astro';
+import TokensBackground from "../components/TokensBackground.astro";
+import LanguageSelector from "../components/LanguageSelector.astro";
+import config from "../config.js";
+
+const {
+	title, description,
+	currentLang, intro1, intro2, intro3, 
+	aboutTitle, aboutRaul, quoteRaul, aboutJoseLuis, quoteJoseLuis, aboutDani, quoteDani,
+	contactTitle, contactText1, contactText2
+} = Astro.props;
+---
+<html lang={currentLang}>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" />
+	<title>{title}</title>
+
+	<link rel="icon" href="favicon.ico" sizes="any">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://use.typekit.net/qku5nve.css">
+	<style global>
+		@import "../styles/global.css";
+	</style>
+	
+	<meta property="og:title" content={title}>
+	<meta property="og:url" content="https://flama.games">
+	<meta property="og:image" content="https://flama.games/assets/web-thumb.jpg">
+	<meta property="og:description" content="${description}" />
+
+	<meta name="description" content={description}>
+	<meta availableLangs={config.langs.join(',')} />
+
+	<base href="/">
+</head>
+<body>
+	<TokensBackground />
+	<main class="wrapper">
+		<div class="gradient-background-left">			
+			<Clouds />
+			<PolkaDots />
+		</div>
+		<div class="gradient-background-right">
+			<Clouds />
+			<PolkaDots />
+		</div>		
+
+		<div class="column">
+
+			<header class="wrapper-logo">
+				<img src="assets/flama-games-logo.png" class="logo" />
+				<LanguageSelector currentLang={currentLang} />
+			</header>
+			
+			<Intro intro1={intro1} intro2={intro2} intro3={intro3} />
+
+			<AboutUs aboutTitle={aboutTitle}
+					 aboutRaul={aboutRaul}
+            		 quoteRaul={quoteRaul}
+            		 aboutJoseLuis={aboutJoseLuis}
+            		 quoteJoseLuis={quoteJoseLuis}
+            		 aboutDani={aboutDani}
+            		 quoteDani={quoteDani} />	
+
+			<Contact contactTitle={contactTitle}
+					 contactText1={contactText1}
+					 contactText2={contactText2} />
+
+			<Footer />
+			
+		</div>
+	</main>	
+	<script>
+	const langs = document.querySelector('[availableLangs]')
+						  .getAttribute('availableLangs')
+						  .split(',');
+	const docLang = document.querySelector('html')
+							.getAttribute('lang');	
+	const isManualLang = document.referrer.includes(window.location.hostname);
+	const currentLocale = navigator.language || navigator.userLanguage || '-';
+	const browserLang = currentLocale.split('-')[0];
+	const isRoot = window.location.pathname === "/";
+	if (isRoot && docLang !== browserLang && langs.includes(browserLang) && !isManualLang) {
+		window.location.href = `/${browserLang}`;
+	}
+	</script>
+</body>
+</html>

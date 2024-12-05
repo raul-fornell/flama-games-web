@@ -1,0 +1,94 @@
+---
+import config from "../config.js";
+const {currentLang} = Astro.props;
+const langList = config.langs.filter(lang => lang !== currentLang);
+function urlFromLetters(letters) {
+    if(letters === config.langs[0]){
+        return "/";        
+    }
+    return "/" + letters;
+}
+---
+<div>
+    <button id="toggleLangButton" class="show">{currentLang}</button>
+    <nav id="langSelector">
+        <ul>
+            {langList.map((letters) => <li class={currentLang === letters ? 'selected':''}>
+                <a href={urlFromLetters(letters)}>{letters}</a>
+            </li>)}
+        </ul>
+    </nav>
+</div>
+
+<script>
+const langSelector = document.querySelector('#langSelector');
+const toggleLang = document.querySelector('#toggleLangButton');
+toggleLang.addEventListener('click', () => langSelector.classList.toggle('show'))
+</script>
+
+<style>
+nav, button {
+    display: none;
+}
+div {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    margin-left: 360px;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+@media (max-width: 1000px) {
+	div {
+		left: auto;
+        right: 20px;
+        margin-left: 0;
+	}
+}
+@media (max-width: 550px) {
+	div {
+		z-index: 999;
+        font-size: 18px;
+	}
+}
+
+ul {
+    list-style: none;
+    padding: 6px 0 0 0;    
+    margin: 0;
+    text-align: left;
+}
+@media (max-width: 1000px) {	
+    li {
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 550px) {
+	ul {
+        padding-top: 10px;  
+        color: white;
+	}
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+    padding: 0;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+@media (max-width: 550px) {
+	button {
+        font-size: 18px;
+        color: white;
+	}
+}
+
+.show {
+    display: block;
+}
+</style>

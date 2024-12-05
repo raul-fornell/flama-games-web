@@ -1,0 +1,45 @@
+---
+import HomeLayout from "../../layouts/home.astro";
+
+const title = 'Flama Games';
+const description = 'Flama games es una editorial de juegos de mesa fundada el 2021 por tres amigos que comparten la misma pasión por los juegos.';
+
+const intro1 = 'Flama games es una editorial de juegos de mesa. Nace el 2021 fruto de las ganas de diseñar y publicar nuestros propios juegos. La formamos tres amigos que compartimos la misma pasión y amor por los juegos.';
+const intro2 = 'Al principio solo jugábamos juntos, pero a medida que probábamos nuevos juegos, surgian ideas de mecánicas. A partir de aquí, empezamos a crear los primeros prototipos en papel y lápiz, a probarlos y a mejorarlos. De repente, diseñar juegos era tan divertido como probarlos!';
+const intro3 = 'Esperamos poder anunciar nuestros primeros juegos pronto y hacer que la montaña de ideas que tenemos en la cabeza se convierta en cartón, dados, cartas y diversión para todo el mundo!';
+
+const aboutTitle = "Nosotros";
+
+const aboutRaul = 'Colecciona más juegos de los que puede probar, pero eso le ha servido para convertirse en una enciclopedia andante sobre el mundo de los juegos de mesa. Su pasión se inició jugando a Magic en 1994, pero cambió las cartas por coliflores cuando descubrió Agrícola de Uwe Rosenberg. Es el artista del grupo y el que más mima las mecánicas.';
+const quoteRaul = 'Me fascina cuando alguien prueba uno de mis prototipos. De repente, las ideas que había tenido en mi cabeza cobran vida y suceden cosas completamente inesperadas';
+const aboutJoseLuis = 'Desde pequeñito, uno de sus momentos favoritos era jugar a juegos de mesa con los amigos del barrio. Siempre le ha gustado crear sus propias versiones de juegos conocidos, aunque fueran de papel y cartón, y inventar nuevas situaciones y mecánicas que mejorasen la experiencia de juego.';
+const quoteJoseLuis = 'Me encanta partir de ideas, narrativas o mecánicas que me gustan, para luego mezclarlas y modificarlas hasta crear alguna cosa totalmente nueva';
+const aboutDani = 'Puede ponerse bastante competitivo jugando a juegos de mesa. Su superpoder es cargarse las mecánicas de los prototipos de Raúl, especialmente cuando se trata de hundir economías y mercados.';
+const quoteDani = 'Eso es lo que hago. Bebo y me cargo juegos';
+
+const contactTitle = "Contacto";
+const contactText1 = 'Podéis escribirnos un correo a';
+const contactText2 = 'o si queréis estar al día de nuestros progresos, la llama Groguetta os lo contará por';
+
+---
+<HomeLayout currentLang="es"
+
+            title={title}
+            description={description}
+            
+            intro1={intro1}
+            intro2={intro2}
+            intro3={intro3}
+
+            aboutTitle={aboutTitle}
+            
+            aboutRaul={aboutRaul}
+            quoteRaul={quoteRaul}
+            aboutJoseLuis={aboutJoseLuis}
+            quoteJoseLuis={quoteJoseLuis}
+            aboutDani={aboutDani}
+            quoteDani={quoteDani} 
+            
+            contactTitle={contactTitle}
+            ontactText1={contactText1}
+            contactText2={contactText2} />

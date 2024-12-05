@@ -1,0 +1,217 @@
+---
+import AboutCard from './AboutCard.astro';
+
+const {aboutTitle, aboutRaul, quoteRaul, aboutJoseLuis, quoteJoseLuis, aboutDani, quoteDani} = Astro.props;
+---
+
+<div class="about">
+	<h2 class="title">{aboutTitle}</h2>
+
+	<div id="carouselCards" class="card-carrousel">
+		<AboutCard name='Raül' email='raul@flama.games' twitter='raul_fornell'>
+			{aboutRaul}
+			<span slot="quote">{quoteRaul}</span>
+		</AboutCard>
+
+		<AboutCard name='Jose Luis' email='joseluis@flama.games' twitter='joseluis_sba'>
+			{aboutJoseLuis}
+			<span slot="quote">{quoteJoseLuis}</span>
+		</AboutCard>
+
+		<AboutCard name='Dani' email='daniel@flama.games'>
+			{aboutDani}
+			<span slot="quote">{quoteDani}</span>
+		</AboutCard>		
+	</div>
+
+	<div id="carouselBullets" class="balls">
+		<span class="selected"></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	<img class="tools" src="assets/tools.png" />
+</div>
+
+<script src="/lib/gestures.js"></script>
+<script>
+const carousel = document.querySelector('#carouselCards');
+const buttons = document.querySelector('#carouselBullets');
+const cards = carousel.querySelectorAll('.card');
+let currentPage = 1;
+let navigationAllowed = true;
+
+function centerCard(page) {
+	[1,2,3].forEach(num => carousel.classList.remove(`page${num}`));
+	carousel.classList.add(`page${page}`);
+}
+
+function setCurrentPage(page) {
+	document.querySelectorAll('#carouselBullets span').forEach(el => el.classList.remove('selected'));
+	document.querySelector(`#carouselBullets span:nth-child(${page}`).classList.add('selected');
+	currentPage = page;
+}
+
+function navigateToElementIndex(event) {
+	if(navigationAllowed) {
+		const el = event.target;
+		const index = Array.from(el.parentNode.children).indexOf(el);
+		centerCard(index + 1);
+		setCurrentPage(index + 1);	
+	}
+}
+
+buttons.addEventListener('click', navigateToElementIndex);
+cards.forEach(card => card.addEventListener('click', () => navigateToElementIndex({target:card})));
+
+function paginate(condition, direction) {
+	if(condition()){
+		navigationAllowed = false;
+		centerCard(currentPage + direction);
+		setCurrentPage(currentPage + direction);
+		setTimeout(() => navigationAllowed = true, 500);
+	}
+}
+
+swipeLeft(carousel, () => {
+	paginate(() => currentPage + 1 < 4, +1);		
+});
+swipeRight(carousel, () => {
+	paginate(() => currentPage - 1 > 0, -1);
+});
+
+function resizeMe(shape) {
+    shape.style.height = '0px';
+    const parentHeight = shape.parentNode.clientHeight;
+    shape.style.height = parentHeight + 'px';
+}
+
+function onWindowResize() {
+    const shapes = document.querySelectorAll(".resizeMe");    
+    shapes.forEach(resizeMe);
+}
+
+window.addEventListener("resize", onWindowResize);
+onWindowResize();
+</script>
+
+<style>
+.about {
+	position: relative;
+	--gap: 62px;
+	--pages: 3;
+	--left-margin: 0;	
+}
+
+.card-carrousel {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--gap);
+	left: 0;
+	transition: left 0.5s;
+	width: calc((100% * var(--pages)) + var(--gap) * (var(--pages) - 1));	
+}
+@media (max-width: 1000px) {
+  	.card-carrousel {
+		--left-margin: 90px;
+	  	margin-left: var(--left-margin);
+	  	width: calc((90% * var(--pages)) + var(--gap) * (var(--pages) - 1) - var(--left-margin) * var(--pages));
+ 	}
+}
+@media (max-width: 550px) {
+  	.card-carrousel {
+		--left-margin: 0;	  	
+		--gap: 20px;
+	  	width: calc((100% * var(--pages)) + var(--gap) * (var(--pages) - 1));
+ 	}
+}
+
+.card-carrousel.page1 {
+	left: 0;
+}
+.card-carrousel.page2 {
+	left: calc(-100% - var(--gap));
+}
+.card-carrousel.page3 {
+	left: calc(-100% * 2 - var(--gap) * 2);
+}
+@media (max-width: 1000px) {
+	.card-carrousel.page2 {
+		left: calc(-90% - var(--gap) + var(--left-margin));
+	}
+	.card-carrousel.page3 {
+		left: calc(-90% * 2 - var(--gap) * 2 + var(--left-margin) * 2);
+	}
+}
+@media (max-width: 550px) {
+	.card-carrousel.page2 {
+		left: calc(-100% - var(--gap));
+	}
+	.card-carrousel.page3 {
+		left: calc(-100% * 2 - var(--gap) * 2);
+	}
+}
+
+
+.balls {
+	display: flex;
+	flex-direction: row;
+	gap: 24px;
+	align-items: center;
+	justify-content: center;
+}
+@media (max-width: 1000px) {
+	.balls {
+		gap: 18px;
+	}
+}
+
+.balls span {
+	background: #E8D552;
+	width: 27px;
+	height: 27px;
+	border-radius: 20px;
+	margin-top: 28px;
+	cursor: pointer;
+}
+@media (max-width: 1000px) {
+	.balls span {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.balls span.selected {
+	background: #FFFFFF;
+	cursor: default;
+}
+
+.tools {
+	width: 432px;
+	height: auto;
+	position: absolute;
+	z-index: -1;
+	top: 277px;
+	left: -277px;
+}
+@media (max-width: 1000px) {
+	.tools {
+		width: 259px;
+		top: 40px;
+		left: -48px;
+		transform: rotate(17deg);
+	}
+}
+@media (max-width: 550px) {
+	.tools {
+		width: 190px;
+		top: -38px;
+		left: auto;
+		right: -102px;
+		transform: rotate(7deg);
+		z-index: 9;
+	}
+}
+</style>

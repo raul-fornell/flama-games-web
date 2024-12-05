@@ -1,0 +1,60 @@
+---
+import { Markdown } from 'astro/components';
+const {intro1, intro2, intro3} = Astro.props; 
+---
+
+<section class="card">
+	<img src="assets/llama-right.png" />
+	<div class="shape"></div>
+	<p>{intro1}</p>
+	<p>{intro2}</p>
+	<p>{intro3}</p>	
+</section>
+
+<style>	
+	section {
+		position: relative;
+	}
+	@media (max-width: 1000px) and (min-width: 551px) {
+		section {
+			margin-right: 90px;
+		}
+	}	
+	
+	img {
+		position: absolute;
+		bottom: 80px;
+		right: -154px;
+		width: 174px;
+		z-index: -1;
+	}
+	@media (max-width: 1000px) {
+		img {
+			width: 125px;
+			bottom: 51px;
+			right: -109px;
+		}
+	}	
+	@media (max-width: 550px) {
+		img {
+			width: 78px;
+			top: -17px;
+			left: -10px;
+			z-index: 1;
+			clip: rect(0px, 78px, 134px, 10px);
+		}		
+	}	
+
+	.shape {
+		display: none;	
+	}
+	@media (max-width: 550px) {
+		.shape {
+			display: block;
+			float: left;
+			shape-outside: polygon(0px 0px, -1px 97.00%, 31% 74%, 53% 43%, 56% -2%);
+			width: 100px;
+			height: 100px;
+		}		
+	}	
+</style>

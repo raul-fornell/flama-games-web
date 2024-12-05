@@ -1,0 +1,61 @@
+<div class="tokens-background"></div>
+<div class="tokens-background-mobile"></div>
+
+<style>
+.tokens-background {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background: url('/assets/tokens.png') repeat;
+	background-size: 500px;
+	background-color: #121216;
+	z-index: -9;
+}
+@media (max-width: 1000px) {
+	.tokens-background {
+		display: none;
+	}
+}
+
+@keyframes tokensLoop {
+  	0% { 
+		background-position-x: 0;
+		background-position-y: 0;
+  	}
+  	100% { 
+		background-position-x: -400px;
+		background-position-y: 400px;
+	}
+}
+
+.tokens-background-mobile {
+	display: none;
+}
+@media (max-width: 550px) {
+	.tokens-background-mobile {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 173px;
+		background: url('/assets/tokens-loop.png') repeat;
+		background-position-x: 0%;
+		background-position-y: 0%;
+		background-size: 200px;
+		background-color: #121216;
+		z-index: 9;		
+		animation: tokensLoop 15s infinite linear;
+		-webkit-mask-size: 403	px;
+		mask-size: 403px;
+		-webkit-mask-repeat: repeat-x;
+		mask-repeat: repeat-x;
+		-webkit-mask-image: url('/assets/background-mask-top.svg');	
+		mask-image: url('/assets/background-mask-top.svg');	
+		-webkit-mask-position: bottom;
+		mask-position: bottom;
+	}
+}
+</style>

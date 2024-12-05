@@ -1,0 +1,48 @@
+---
+const {contactTitle, contactText1, contactText2} = Astro.props;
+---
+<h2 class="title">{contactTitle}</h2>
+<div class="card card-contact">   
+    <img class="llama" src="assets/llama-front.png" />
+    <div>
+        {contactText1} <a href="mailto:info@flama.games">info@flama.games</a> {contactText2} <a href="https://twitter.com/flama_games">Twitter</a>.        
+    </div>
+
+    <div class="contact">
+        <a href="mailto:info@flama.games">
+            <img src="assets/envelope.png" />
+            info@flama.games
+        </a>
+        <a href="https://twitter.com/flama_games">
+            <img src="assets/twitter.png" />
+            @flama_games
+        </a>
+    </div>
+</div>
+
+<style>
+@media (max-width: 1000px) {
+	.card-contact {
+		margin: 0 90px;
+	}
+}
+@media (max-width: 550px) {
+	.card-contact {
+        position: relative;
+		margin: 0;
+	}
+}
+
+.llama {
+    display: none;
+}
+@media (max-width: 550px) {
+	.llama {
+        position: absolute;
+        display: block;
+		width: 58px;
+        top: -98px;
+		right: 22px;
+    }
+}
+</style>

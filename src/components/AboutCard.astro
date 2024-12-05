@@ -1,0 +1,160 @@
+---
+const { name, email, twitter } = Astro.props;
+const randNumber = Math.ceil(Math.random() * 5); 
+---
+<div class="card background">
+    <div class="cols">
+        <h3 class="name">{name}</h3>        
+        <div>
+            <div class="shape resizeMe"></div>
+            <p>
+                <slot />
+            </p>
+        </div>
+    </div>
+
+    <div class="quote">
+        <span></span>
+        <slot name="quote"></slot>
+        <span></span>
+    </div>
+    
+    <div class="contact">
+        <a href="mailto:${email}">
+            <img src="assets/envelope.png" class="rotate-me-${randNumber}" />
+            {email}
+        </a>
+        <a href="https://twitter.com/${twitter}" style="display: ${twitter ? 'inherit':'none'}">
+            <img src="assets/twitter.png" />
+            @{twitter}
+        </a>
+    </div>
+</div>
+
+<style>
+    .background {
+        background-image: url('/assets/about-card-background.png');
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 808px;
+    }
+    @media (max-width: 1000px) {
+		.background {
+			background: white;
+		}
+	}
+
+    .cols {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    @media (max-width: 1000px) {
+		.cols {            
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 22px;
+        }
+	}
+
+    .name {
+        color: #888888;
+        font-size: 42px;
+        font-family: marvin-round, sans-serif;
+	    font-weight: 400;
+        line-height: 42px;        
+    }
+    @media (max-width: 1000px) {
+		.name {
+			font-size: 30px;
+            line-height: 30px;
+		}
+	}
+
+    .shape {
+        float: left;
+        shape-outside: polygon(0px 0px, 0px 100%, 70.00% 75%, 100% 50%, 70% 25%);
+        width: 40px; 
+    }
+    @media (max-width: 1000px) {
+		.shape {
+            width: 25px; 
+        }
+	}
+    @media (max-width: 550px) {
+		.shape {
+            display: none;
+        }
+	}
+
+    .quote {
+        color: #A7A29D;
+        font-style: italic;
+        text-align: center;
+        line-height: 34px;
+        position: relative;
+        max-width: 594px;
+        margin: 33px auto 0 auto;
+    }
+    @media (max-width: 1000px) {
+		.quote {
+            line-height: 24px;
+            margin: 33px 30px 0 30px;
+        }
+	}
+
+    .quote span {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 150px;
+        opacity: 0.22;
+        font-weight: bold;
+        position: absolute;
+    }
+    @media (max-width: 1000px) {
+		.quote span {
+            font-size: 100px;
+        }
+	}
+
+    .quote span:first-of-type {
+        margin: 19px -46px;
+    }
+    @media (max-width: 1000px) {
+		.quote span:first-of-type {
+            margin: 18px -30px;
+        }
+	}
+
+    .quote span:last-of-type {
+        margin: 31px -50px;
+    }
+     @media (max-width: 1000px) {
+		.quote span:last-of-type {
+            margin: 23px -41px;
+        }
+	}
+
+    .quote span:first-of-type::before {
+        content: "“";
+    }
+
+    .quote span:last-of-type::before {
+        content: "”";
+    }
+
+    .rotate-me-1 {
+        transform: rotate(-20deg);
+    }
+    .rotate-me-2 {
+        transform: rotate(-10deg);
+    }
+    .rotate-me-3 {
+        transform: rotate(5deg);
+    }
+    .rotate-me-4 {
+        transform: rotate(15deg);
+    }
+    .rotate-me-5 {
+        transform: rotate(25deg);
+    }
+</style>

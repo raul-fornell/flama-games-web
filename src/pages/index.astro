@@ -1,0 +1,45 @@
+---
+import HomeLayout from "../layouts/home.astro";
+
+const title = 'Flama Games';
+const description = 'Flama games is a board game publisher that was founded in 2021 by three friends with a shared passion for board games.';
+
+const intro1 = 'Flama games is a board game publisher that was founded in 2021 by three friends with a shared passion for board games. We launched Flama games with the objective of designing our own games and sharing them with the world.';
+const intro2 = 'At first we only played games made by others, discussing ideas on new mechanics and potential expansions. Then we started working on our own prototypes, and that’s when we realized we enjoyed designing new games just as much!';
+const intro3 = 'We expect to publish our first games in the coming months and hopefully our ideas will soon turn into boards, cards, dice and fun for everyone!';
+
+const aboutTitle = "About Us";
+
+const aboutRaul = 'He collects more games than he can play, and that’s why he’s a walking encyclopedia of the board games world. His passion began when he started playing Magic in 1994, but he changed cards for cauliflowers when he discovered Agricola by Uwe Rosenberg. He’s the group’s artist and the one most dedicated to perfectioning game mechanics.';
+const quoteRaul = 'I am delighted when someone plays one of my games. Suddenly, the ideas I had come alive and quite often, unexpected and exciting things happen';
+const aboutJoseLuis = 'Since he was a child, one of his favorite hobbies has always been playing board games with friends. He always enjoyed developing variations of well known games, even if these were created in cardboard and pen, creating new mechanics that enhanced game experience.';
+const quoteJoseLuis = 'I love combining ideas, mechanics and narratives I like, turning them into something completely new';
+const aboutDani = 'He can get quite competitive when playing board games. His superpower is breaking key mechanics in Raül’s prototypes, especially if it involves the disruption or destruction of a game’s economy.';
+const quoteDani = 'That’s what I do. I drink and I break games';
+
+const contactTitle = "Contact";
+const contactText1 = 'You can reach us at';
+const contactText2 = 'and if you want to track our progress, follow the Groguetta llama on';
+
+---
+<HomeLayout currentLang="en"
+
+            title={title}
+            description={description}
+            
+            intro1={intro1}
+            intro2={intro2}
+            intro3={intro3}
+
+            aboutTitle={aboutTitle}
+            
+            aboutRaul={aboutRaul}
+            quoteRaul={quoteRaul}
+            aboutJoseLuis={aboutJoseLuis}
+            quoteJoseLuis={quoteJoseLuis}
+            aboutDani={aboutDani}
+            quoteDani={quoteDani} 
+            
+            contactTitle={contactTitle}
+            contactText1={contactText1}
+            contactText2={contactText2} />

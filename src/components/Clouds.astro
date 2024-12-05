@@ -1,0 +1,94 @@
+<div class="sky">   
+    <img class="cloud" src="assets/cloud.png" />
+    <img class="cloud" src="assets/cloud.png" />
+    <img class="cloud" src="assets/cloud.png" />
+    <img class="cloud" src="assets/cloud.png" />
+    <img class="cloud" src="assets/cloud.png" />
+</div>
+
+<style>
+.sky {
+  top: 0;
+  position: absolute;  
+  height: 400px;
+  width: 100%;
+}
+@media (max-width: 550px) {
+	.sky {
+		display: none;
+	}
+}
+
+.cloud {
+  position: absolute;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes translation1 {
+  0% { left: -222px; }
+  100% { left: 100vw; }
+}
+
+.cloud:nth-child(1) {
+  top: 25px;
+  width: 222px;
+  animation-name: translation1;
+  animation-duration: 90s;
+  animation-delay: -56s;
+}
+
+@keyframes translation2 {
+  0% { left: -113px; }
+  100% { left: 100vw; }
+}
+
+.cloud:nth-child(2) {
+  top: 172px;
+  width: 113px;
+  opacity: 0.8;
+  animation-name: translation2;
+  animation-duration: 120s;
+  animation-delay: -16s;
+}
+
+@keyframes translation3 {
+  0% { left: -66px; }
+  100% { left: 100vw; }
+}
+
+.cloud:nth-child(3) {
+  top: 265px;
+  width: 66px;
+  opacity: 0.6;
+  animation-name: translation3;
+  animation-duration: 150s;
+}
+
+@keyframes translation4 {
+  0% { left: -66px; }
+  100% { left: 100vw; }
+}
+
+.cloud:nth-child(4) {
+  top: 195px;
+  width: 99px;
+  opacity: 0.7;
+  animation-name: translation4;
+  animation-duration: 120s;
+  animation-delay: -56s;
+}
+
+@keyframes translation5 {
+  0% { left: -200px; }
+  100% { left: 100vw; }
+}
+
+.cloud:nth-child(5) {
+  top: 5px;
+  width: 200px;
+  opacity: 0.9;
+  animation-name: translation5;
+  animation-duration: 95s;  
+}
+</style>

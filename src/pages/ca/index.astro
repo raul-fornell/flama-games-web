@@ -1,0 +1,45 @@
+---
+import HomeLayout from "../../layouts/home.astro";
+
+const title = 'Flama Games';
+const description = 'Flama games és una editorial de jocs de taula que va ser fundada l\'any 2021 per tres amics amb la mateixa passió pels jocs de taula.';
+
+const intro1 = 'Flama games és una editorial de jocs de taula. Neix el 2021 fruit de les ganes de dissenyar i publicar el nostres propis jocs. La formem tres amics que compartim la mateixa passió i amor pels jocs.';
+const intro2 = 'Al principi només jugàvem junts, però parlant de jocs sorgien idees de mecàniques i possibles nous jocs. D’aquí vam passar a crear els primers prototipus en paper I llapis, a provar-los entre nosaltres, a sugerir millores i ajudar-nos entre nosaltres. De sobte, dissenyar jocs era tan divertit com provar-los!';
+const intro3 = 'Ben aviat esperem poder anunciar els nostres primers jocs i que la muntanya d’idees que tenim es converteixi en cartró, daus, cartes i diversió per a tothom!';
+
+const aboutTitle = "Nosaltres";
+
+const aboutRaul = 'Colecciona més jocs dels que juga, però això li  ha servit per ser una enciclopèdia amb potes sobre el món dels jocs de taula. La seva passió es va iniciar jugant a Magic al 1994, però va canviar les cartes per coliflors quan va descobrir l’Agrícola d’Uwe Rosenberg. És l’artista del grup i el que més mima més les mecàniques.';
+const quoteRaul = 'Em fascina quan algú prova un prototipus meu, de sobte, les idees que havia tingut al cap prenen vida i passen tot de coses inesperades';
+const aboutJoseLuis = 'Des de ben petit, un dels seus moments preferits era poder jugar a jocs de taula amb els amics del barri. Sempre li ha agradat crear les seves pròpies versions de jocs que coneixia, encara que fossin de paper i cartró, i inventar noves situacions i mecàniques que milloressin l’experiència de joc.';
+const quoteJoseLuis = 'M’encanta partir d’idees, narrativa o mecàniques que m’agraden, per després mesclar-les i modificar-les fins a crear alguna cosa totalment nova';
+const aboutDani = 'He can get quite competitive when playing board games. His superpower is breaking key mechanics in Raül’s prototypes, especially if it involves the disruption or destruction of a game’s economy.';
+const quoteDani = 'That’s what I do. I drink and I break games';
+
+const contactTitle = "Contacte";
+const contactText1 = 'Ens podeu escriure un correu a';
+const contactText2 = 'o si voleu estar al dia dels nostres progressos, la llama Groguetta us ho explica a';
+
+---
+<HomeLayout currentLang="ca"
+
+            title={title}
+            description={description}
+            
+            intro1={intro1}
+            intro2={intro2}
+            intro3={intro3}
+
+            aboutTitle={aboutTitle}
+            
+            aboutRaul={aboutRaul}
+            quoteRaul={quoteRaul}
+            aboutJoseLuis={aboutJoseLuis}
+            quoteJoseLuis={quoteJoseLuis}
+            aboutDani={aboutDani}
+            quoteDani={quoteDani} 
+            
+            contactTitle={contactTitle}
+            contactText1={contactText1}
+            contactText2={contactText2} />
